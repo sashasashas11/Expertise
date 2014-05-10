@@ -1,0 +1,17 @@
+%h1 Listing expertizes
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @expertizes.each do |expertize|
+    %tr
+      %td= link_to 'Show', expertize
+      %td= link_to 'Edit', edit_expertize_path(expertize)
+      %td= link_to 'Destroy', expertize, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Expertize', new_expertize_path
