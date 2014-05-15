@@ -1,29 +1,23 @@
 class ExpertizesController < ApplicationController
   before_action :set_expertize, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:index]
 
-  # GET /expertizes
-  # GET /expertizes.json
+
   def index
     @expertizes = Expertize.all
     render json: @expertizes
   end
 
-  # GET /expertizes/1
-  # GET /expertizes/1.json
   def show
   end
 
-  # GET /expertizes/new
   def new
     @expertize = Expertize.new
   end
 
-  # GET /expertizes/1/edit
   def edit
   end
 
-  # POST /expertizes
-  # POST /expertizes.json
   def create
     @expertize = Expertize.new(expertize_params)
 
@@ -38,8 +32,6 @@ class ExpertizesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /expertizes/1
-  # PATCH/PUT /expertizes/1.json
   def update
     respond_to do |format|
       if @expertize.update(expertize_params)
@@ -52,8 +44,6 @@ class ExpertizesController < ApplicationController
     end
   end
 
-  # DELETE /expertizes/1
-  # DELETE /expertizes/1.json
   def destroy
     @expertize.destroy
     respond_to do |format|
