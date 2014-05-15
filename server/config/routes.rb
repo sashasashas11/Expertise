@@ -1,4 +1,5 @@
 Expertise::Application.routes.draw do
+  get '/welcome', to: 'expertizes#index'
   root to: "registration#profile"
   devise_for :users, :controllers => { registrations: "users" }
   resources :expertizes do
