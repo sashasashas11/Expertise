@@ -5,7 +5,7 @@ class ExpertizesController < ApplicationController
 
   def index
     @expertizes = Expertize.all
-    render json: @expertizes
+    #render json: @expertizes
   end
 
   def show

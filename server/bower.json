@@ -1,14 +1,14 @@
 {
-	"name": "client",
-	"version": "0.0.1",
-	"dependencies": {
-		"angular": "1.2.16",
-		"jquery": "~2.0.3",
-		"bootstrap": "~3.0.3",
-		"angular-resource": "1.2.16",
-		"angular-cookies": "1.2.16",
-		"angular-sanitize": "1.2.16",
-		"angular-ui-bootstrap": "0.9.0",
+  "name": "client",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "1.2.16",
+    "jquery": "~2.0.3",
+    "bootstrap": "~3.0.3",
+    "angular-resource": "1.2.16",
+    "angular-cookies": "1.2.16",
+    "angular-sanitize": "1.2.16",
+    "angular-ui-bootstrap": "0.9.0",
     "angular-route": "1.2.16",
     "angular-ui": "~0.4.0"
   }
