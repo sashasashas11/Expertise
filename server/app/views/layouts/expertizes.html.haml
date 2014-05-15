@@ -3,8 +3,8 @@
   %head
     %title= @page_title or "Page Title"
     -#= stylesheet_link_tag    "/bootstrap/bootstrap.min", media: "all", "data-turbolinks-track" => true
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "expertise", "data-turbolinks-track" => true
+    -#= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "expertise", media: "all", "data-turbolinks-track" => true
     = csrf_meta_tags
     :css
       #{yield :stylesheets}
