@@ -6,4 +6,3 @@
 //= require ../client/lib/angular-ui/build/angular-ui.js
 //= require ../client/app/app
 //= require ../client/app/controllers/expertise_controller
-console.log('aaaaaa');
