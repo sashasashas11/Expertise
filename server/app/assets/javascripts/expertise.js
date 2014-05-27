@@ -6,3 +6,11 @@
 //= require ../client/lib/angular-ui/build/angular-ui.js
 //= require ../client/app/app
 //= require ../client/app/controllers/expertise_controller
+//= require ../client/app/controllers/welcome_controller
+
+!function() {
+	var sign_out = document.getElementById("sign_out");
+	sign_out.addEventListener("click", function() {
+		window.location.href = '/';
+	}, false);
+}();

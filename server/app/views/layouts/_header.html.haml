@@ -9,7 +9,7 @@
     %nav.collapse.navbar-collapse
       %ul.nav.navbar-nav.pull-right
         - if user_signed_in?
-          .text-success
+          .text-success.singned-user
             %li= "Signed in as #{current_user.email}"
         %li= link_to "Home",    '#'
         -#%li= link_to "Registration", new_user_path

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('expertise.controllers', []).
-	controller('expertiseController', function ($scope, $http, $cookieStore, $location, $cookies) {
+	controller('expertiseController', function ($scope, $http, $cookieStore, $location, $cookies, $window) {
 
 		$scope.foo = function(item) {
 			console.log(item)
@@ -15,6 +15,12 @@ angular.module('expertise.controllers', []).
 //			$http.delete('/users/sign_out').success(function() {
 //				console.log('ok');
 //			});
+		}
+
+		$scope.home = function () {
+			$location.path("/");
+			$window.location.reload();
+			window.location.reload();
 		}
 
 	});

@@ -3,11 +3,31 @@
   %head
     %title= @page_title or "Page Title"
     -#= stylesheet_link_tag    "/bootstrap/bootstrap.min", media: "all", "data-turbolinks-track" => true
-    -#= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "expertise", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+
     = csrf_meta_tags
     :css
       #{yield :stylesheets}
   %body
+    %header.navbar.navbar-inverse{role: "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        %nav.collapse.navbar-collapse
+          %span#logo EXPERTISE
+          %ul.nav.navbar-nav.pull-right
+            %li
+              = link_to "Головна",    '/welcome'
+              %li
+                %a{href: "/expertise"}Експертизи
+            - if user_signed_in?
+              %li
+                %a#sign_out{href: "/"} Профіль
+              .text-success.singned-user
+                %li= "Signed in as #{current_user.email}"
     %div{"ng-view" => ""}
-      -#= yield
+    = javascript_include_tag "expertise", media: "all", "data-turbolinks-track" => true

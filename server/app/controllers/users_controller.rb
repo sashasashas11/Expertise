@@ -5,4 +5,6 @@ class UsersController < Devise::RegistrationsController
 		#@user.build_address
   end
 
+
+
 end
