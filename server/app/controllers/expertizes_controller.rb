@@ -1,11 +1,12 @@
 class ExpertizesController < ApplicationController
   before_action :set_expertize, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, :only => [:index]
+  skip_before_action :verify_authenticity_token
 
 
   def index
-    @expertizes = Expertize.all
-    #render json: @expertizes
+      @expertizes = Expertize.all.to_json()
+      render json: @expertizes if params[:format] == "json"
   end
 
   def show
@@ -19,7 +20,7 @@ class ExpertizesController < ApplicationController
   end
 
   def create
-    @expertize = Expertize.new(expertize_params)
+    @expertize = Expertize.new(name: params[:expertize][:name], method: params[:expertize][:method])
 
     respond_to do |format|
       if @expertize.save

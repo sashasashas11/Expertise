@@ -7,6 +7,7 @@
 //= require ../client/app/app
 //= require ../client/app/controllers/expertise_controller
 //= require ../client/app/controllers/welcome_controller
+//= require ../client/lib/angular-bootstrap/ui-bootstrap-tpls.min
 
 !function() {
 	var sign_out = document.getElementById("sign_out");

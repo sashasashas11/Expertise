@@ -1,1 +1,40 @@
-fffffffff
+<div class="col-md-3">
+    <div class="block-menu">
+        <button ng-click="add_expertise()" class="btn btn-lg btn-primary">Додати експертизу</button>
+    </div>
+    <ul ng-if="expertise_list.length != 0">
+        <h3>Список експертиз:</h3>
+        <li ng-repeat="item in expertise_list"><a ng-click="show(item)">{{item.name}}</a></li>
+    </ul>
+</div>
+
+<div class="col-md-9">
+    <div ng-show="show_expertise">
+        <div class="form-group">
+            <label>Назва експертизи
+                <input ng-model="expertise.name" class="form-control" type="text"/></label>
+            <button ng-click="save(expertise.name)" class="btn btn-success">Створити</button>
+        </div>
+    </div>
+
+    <tabset ng-if="expertiseName">
+        <tab heading="Альтернативи">
+            <h1>{{expertiseName}}</h1>
+            <!--<button ng-click="add_alternative()" class="btn btn-info">Створити альтернативу</button>-->
+            <div class="form-group">
+                <label>Назва альтернативи
+                    <input ng-model="alternative.name" class="form-control" type="text"/>
+                </label>
+                <button ng-click="addAlternative(alternative.name)" class="btn btn-success">Додати</button>
+            </div>
+            <div>
+                <ul>Альтернативи:
+                    <li ng-repeat="item in alnernative_list">{{item}}</li>
+                </ul>
+            </div>
+        </tab>
+        <tab heading="Критерії">
+            <h1>{{expertiseName}}</h1>
+        </tab>
+    </tabset>
+</div>
