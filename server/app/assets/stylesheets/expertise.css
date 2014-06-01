@@ -1,8 +1,12 @@
 .block-menu {
-    /*background-color: #cccccc;*/
     min-height: 100px;
     padding: 20px;
-    /*width: 20%;*/
 }
 
+.nav-tabs li {
+    cursor: pointer;
+}
 
+.modal-dialog {
+    width: 300px;
+}

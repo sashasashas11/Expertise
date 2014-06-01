@@ -1,6 +1,6 @@
 <div class="col-md-3">
     <div class="block-menu">
-        <button ng-click="add_expertise()" class="btn btn-lg btn-primary">Додати експертизу</button>
+        <button ng-click="openModalWindow()" class="btn btn-lg btn-primary">Додати експертизу</button>
     </div>
     <ul ng-if="expertise_list.length != 0">
         <h3>Список експертиз:</h3>
@@ -9,14 +9,6 @@
 </div>
 
 <div class="col-md-9">
-    <div ng-show="show_expertise">
-        <div class="form-group">
-            <label>Назва експертизи
-                <input ng-model="expertise.name" class="form-control" type="text"/></label>
-            <button ng-click="save(expertise.name)" class="btn btn-success">Створити</button>
-        </div>
-    </div>
-
     <tabset ng-if="expertiseName">
         <tab heading="Альтернативи">
             <h1>{{expertiseName}}</h1>
