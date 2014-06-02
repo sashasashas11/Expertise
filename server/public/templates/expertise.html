@@ -2,9 +2,12 @@
     <div class="block-menu">
         <button ng-click="openModalWindow()" class="btn btn-lg btn-primary">Додати експертизу</button>
     </div>
-    <ul ng-if="expertise_list.length != 0">
+    <ul class="list-group" ng-if="expertise_list.length != 0">
         <h3>Список експертиз:</h3>
-        <li ng-repeat="item in expertise_list"><a ng-click="show(item)">{{item.name}}</a></li>
+        <li class="list-group-item list-group-item-info list-expertise" ng-repeat="item in expertise_list" ng-click="show(item)">
+            {{item.name}}
+            <i ng-click="removeExpertise(item)" class="glyphicon glyphicon-remove remove-expertise"></i>
+        </li>
     </ul>
 </div>
 

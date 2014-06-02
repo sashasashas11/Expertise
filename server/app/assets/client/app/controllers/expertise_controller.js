@@ -40,6 +40,14 @@ angular.module('expertise.controllers', []).
 			$scope.expertiseName = item.name;
 		}
 
+		$scope.removeExpertise = function (expertise) {
+			var index = $scope.expertise_list.indexOf(expertise);
+			$scope.expertise_list.splice(index, 1);
+			$http.delete('/expertizes/' + expertise.id + '.json').success(function(res) {
+				console.log(res);
+			});
+		}
+
 		$scope.openModalWindow = function () {
 			var modalInstance = $modal.open({
 				templateUrl: 'templates/add_expertise_modal.html',
