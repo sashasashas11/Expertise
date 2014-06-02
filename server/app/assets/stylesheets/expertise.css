@@ -33,11 +33,12 @@
     margin-left: 20px;
 
 }
-.tab-pane.ng-scope.active {
+.wrapper-home .tab-pane.ng-scope.active {
     position: absolute;
     left: 650px;
     top: 0;
     font-size: 17px;
+    padding-right: 15px;
 }
 
 .wrapper-home {
