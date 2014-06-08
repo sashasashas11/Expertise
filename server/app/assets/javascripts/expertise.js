@@ -8,6 +8,8 @@
 //= require ../client/app/controllers/expertise_controller
 //= require ../client/app/controllers/welcome_controller
 //= require ../client/lib/angular-bootstrap/ui-bootstrap-tpls.min
+//= require ../client/lib/textAngular/dist/textAngular-sanitize.min
+//= require ../client/lib/textAngular/dist/textAngular.min
 
 !function() {
 	var sign_out = document.getElementById("sign_out");

@@ -39,6 +39,8 @@
     top: 0;
     font-size: 17px;
     padding-right: 15px;
+    overflow-y: auto;
+    height: 600px;
 }
 
 .wrapper-home {

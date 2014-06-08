@@ -6,6 +6,7 @@ angular.module('Expertise', [
 		'ngRoute',
 		'ngCookies',
 		'ui.bootstrap',
+		'textAngular',
 		'ui'
 	]).config(['$routeProvider', function ($routeProvider) {
 		$routeProvider.
