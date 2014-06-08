@@ -8,6 +8,9 @@ Expertise::Application.routes.draw do
   resources :expertizes do
   end
 
+  put '/methods/:id' => 'methods#update'
+  get '/methods' => 'methods#index'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
