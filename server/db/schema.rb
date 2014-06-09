@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608145834) do
+ActiveRecord::Schema.define(version: 20140608205813) do
+
+  create_table "alternatives", force: true do |t|
+    t.string   "name"
+    t.integer  "expertize_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "expertizes", force: true do |t|
     t.string   "name"
