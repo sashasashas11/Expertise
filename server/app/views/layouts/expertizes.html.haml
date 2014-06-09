@@ -5,7 +5,7 @@
     -#= stylesheet_link_tag    "/bootstrap/bootstrap.min", media: "all", "data-turbolinks-track" => true
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = stylesheet_link_tag    "expertise", media: "all", "data-turbolinks-track" => true
-    %link{href: "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", rel: "stylesheet"}/
+    = stylesheet_link_tag    "font-awesome.min", media: "all", "data-turbolinks-track" => true
     = csrf_meta_tags
     :css
       #{yield :stylesheets}
