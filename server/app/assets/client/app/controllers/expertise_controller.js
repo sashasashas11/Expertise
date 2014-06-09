@@ -5,6 +5,7 @@ angular.module('expertise.controllers', []).
 
 		$scope.expertise_list = [];
 		$scope.alnernative_list = [];
+		$scope.alternative = {};
 
 		$http.get("/expertise.json").success(function(res){
 			$scope.expertise_list = res;
@@ -32,12 +33,26 @@ angular.module('expertise.controllers', []).
 			$scope.show_form_expertise = true;
 		}
 
-		$scope.addAlternative = function(name) {
-			$scope.alnernative_list.push(name);
+		$scope.addAlternative = function(name, expertise) {
+			$http.post('/alternatives', {name: name, expertise: expertise}).success(function(res) {
+				$scope.alnernative_list.push(res);
+				$scope.alternative.name =  "";
+			});
+		}
+
+		$scope.removeAlternative = function(alternative) {
+			$http.delete('/alternatives/' + alternative.id).success(function(){
+				var index = $scope.alnernative_list.indexOf(alternative);
+				$scope.alnernative_list.splice(index, 1);
+			});
 		}
 
 		$scope.show = function(item) {
-			$scope.expertiseName = item.name;
+			$http.get('/alternatives/' + item.id).success(function(res) {
+//				var index = $scope.expertise_list.indexOf(item);
+				$scope.alnernative_list = res;
+			})
+			$scope.expertise = item;
 		}
 
 		$scope.removeExpertise = function (expertise) {
@@ -50,7 +65,7 @@ angular.module('expertise.controllers', []).
 
 		$scope.openModalWindow = function () {
 			var modalInstance = $modal.open({
-				templateUrl: 'templates/add_expertise_modal.html',
+				templateUrl: 'templates/expertise_modal.html',
 				controller: expertiseModalCtrl,
 				resolve: {
 					expertiseList: function () { return $scope.expertise_list; }
@@ -58,10 +73,41 @@ angular.module('expertise.controllers', []).
 			});
 		};
 
+		$scope.editExpertise = function (expertise) {
+			var modalInstance = $modal.open({
+				templateUrl: 'templates/expertise_modal.html',
+				controller: expertiseEditModalCtrl,
+				resolve: {
+					expertise: function () { return expertise; },
+					expertiseList: function () { return $scope.expertise_list; }
+				}
+			});
+		};
+
+		var expertiseEditModalCtrl = function ($scope, $modalInstance, expertiseList, expertise) {
+			$scope.expertise = angular.copy(expertise);
+			$scope.edit = true;
+
+			$scope.update = function(expertise) {
+				$http.put('/expertizes/'+expertise.id + ".json", {expertize:expertise}).success(function(res) {
+					var index = expertiseList.indexOf(expertise);
+					for (var i = 0; i<expertiseList.length; i++) {
+						if (expertiseList[i].id == expertise.id)
+							expertiseList[i] = expertise;
+					}
+					$scope.cancel();
+				});
+			}
+
+			$scope.cancel = function () {
+				$modalInstance.dismiss('cancel');
+			};
+		};
+
 		var expertiseModalCtrl = function ($scope, $modalInstance, expertiseList) {
-			$scope.save = function(name) {
-				expertiseList.push({ name: name });
-				$http.post("/expertizes.json", { name: name, method: "test" }).success(function(res){
+			$scope.save = function(expertise) {
+				expertiseList.push({ name: expertise.name, goal: expertise.goal });
+				$http.post("/expertizes.json", { name: expertise.name, goal: expertise.goal, method: "test" }).success(function(res){
 					$scope.cancel();
 				});
 			}

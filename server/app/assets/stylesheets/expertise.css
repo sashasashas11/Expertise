@@ -1,6 +1,5 @@
 .block-menu {
-    min-height: 100px;
-    padding: 20px;
+    min-height: 40px;
 }
 
 .nav-tabs li {
@@ -9,6 +8,10 @@
 
 .modal-dialog {
     width: 300px;
+}
+
+.modal-body .form-group label {
+    width: 100%;
 }
 
 .title {
@@ -100,5 +103,11 @@
 }
 
 .list-group .list-expertise .remove-expertise:hover {
-    color: rgba(203, 12, 15, 0.97);
+    color: rgba(236, 236, 236, 0.97);
+}
+
+.expertise-goal {
+    font-style: oblique;
+    font-size: 19px;
+    color: rgba(0, 0, 0, 0.58);
 }

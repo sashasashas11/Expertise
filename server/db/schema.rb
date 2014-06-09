@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608205813) do
+ActiveRecord::Schema.define(version: 20140608205815) do
 
   create_table "alternatives", force: true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140608205813) do
     t.string   "method"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "goal"
   end
 
   create_table "methods", force: true do |t|
@@ -52,6 +53,10 @@ ActiveRecord::Schema.define(version: 20140608205813) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "failed_attempts",        default: 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.string   "authentication_token"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
@@ -60,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140608205813) do
     t.integer  "role_id"
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

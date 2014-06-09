@@ -20,7 +20,7 @@ class ExpertizesController < ApplicationController
   end
 
   def create
-    @expertize = Expertize.new(name: params[:expertize][:name], method: params[:expertize][:method])
+    @expertize = Expertize.new(name: params[:expertize][:name], goal: params[:goal], method: params[:expertize][:method])
 
     respond_to do |format|
       if @expertize.save
@@ -35,7 +35,7 @@ class ExpertizesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @expertize.update(expertize_params)
+      if @expertize.update(name: params[:expertize][:name], goal: params[:expertize][:goal], method: params[:expertize][:method])
         format.html { redirect_to @expertize, notice: 'Expertize was successfully updated.' }
         format.json { head :no_content }
       else

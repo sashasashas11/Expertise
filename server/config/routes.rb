@@ -11,6 +11,10 @@ Expertise::Application.routes.draw do
   put '/methods/:id' => 'methods#update'
   get '/methods' => 'methods#index'
 
+  get '/alternatives/:expertize' => 'alternatives#index'
+  post '/alternatives' => 'alternatives#create'
+  delete '/alternatives/:id' => 'alternatives#destroy'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
