@@ -5,6 +5,8 @@ angular.module('expertise.controllers', []).
 
 		$scope.expertise_list = [];
 		$scope.alnernative_list = [];
+		$scope.criterions = [];
+		$scope.criterion = {};
 		$scope.alternative = {};
 
 		$http.get("/expertise.json").success(function(res){
@@ -51,7 +53,12 @@ angular.module('expertise.controllers', []).
 			$http.get('/alternatives/' + item.id).success(function(res) {
 //				var index = $scope.expertise_list.indexOf(item);
 				$scope.alnernative_list = res;
-			})
+			});
+
+			$http.get('/criterions/' + item.id).success(function(res) {
+				$scope.criterions = res;
+			});
+
 			$scope.expertise = item;
 		}
 
@@ -63,22 +70,37 @@ angular.module('expertise.controllers', []).
 			});
 		}
 
-		$scope.openModalWindow = function () {
-			var modalInstance = $modal.open({
-				templateUrl: 'templates/expertise_modal.html',
-				controller: expertiseModalCtrl,
-				resolve: {
-					expertiseList: function () { return $scope.expertise_list; }
-				}
-			});
-		};
-
 		$scope.editExpertise = function (expertise) {
 			var modalInstance = $modal.open({
 				templateUrl: 'templates/expertise_modal.html',
 				controller: expertiseEditModalCtrl,
 				resolve: {
 					expertise: function () { return expertise; },
+					expertiseList: function () { return $scope.expertise_list; }
+				}
+			});
+		};
+
+//		CRITERION BLOCK
+		$scope.addCriterion = function(name, expertise) {
+			$http.post('/criterions', {name: name, expertise: expertise}).success(function(res) {
+				$scope.criterions.push(res);
+				$scope.criterion.name = "";
+			});
+		}
+
+		$scope.removeCriterion = function(criterion) {
+			$http.delete('/criterions/' + criterion.id).success(function(){
+				var index = $scope.criterions.indexOf(criterion);
+				$scope.criterions.splice(index, 1);
+			});
+		}
+
+		$scope.openModalWindow = function () {
+			var modalInstance = $modal.open({
+				templateUrl: 'templates/expertise_modal.html',
+				controller: expertiseModalCtrl,
+				resolve: {
 					expertiseList: function () { return $scope.expertise_list; }
 				}
 			});
