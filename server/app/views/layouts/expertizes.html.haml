@@ -29,6 +29,6 @@
               %li
                 %a#sign_out{href: "/"} Профіль
               .text-success.singned-user
-                %li= "Signed in as #{current_user.email}"
+                %li= "Користувач #{current_user.email}"
     %div{"ng-view" => ""}
     = javascript_include_tag "expertise", media: "all", "data-turbolinks-track" => true
