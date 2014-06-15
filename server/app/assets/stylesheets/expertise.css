@@ -111,3 +111,18 @@
     font-size: 19px;
     color: rgba(0, 0, 0, 0.58);
 }
+
+.criterions .remove {
+    padding-right: 18px;
+    padding-left: 5px;
+}
+
+.criterions ul {
+    padding-left: 0;
+}
+
+.criterions ul li {
+    margin-left: 20px;
+    list-style: none;
+    padding-bottom: 8px;
+}

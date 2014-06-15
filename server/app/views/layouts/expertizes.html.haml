@@ -22,13 +22,11 @@
           %a#logo{href: "/welcome"} EXPERTISE
           %ul.nav.navbar-nav.pull-right
             %li
-              = link_to "Головна",    '/welcome'
-              %li
-                %a{href: "/expertise"}Експертизи
+              %a{href: "/expertise"}Експертизи
             - if user_signed_in?
               %li
-                %a#sign_out{href: "/"} Профіль
               .text-success.singned-user
-                %li= "Користувач #{current_user.email}"
+                %li
+                  %a#sign_out{href: "/"} Користувач #{current_user.email}
     %div{"ng-view" => ""}
     = javascript_include_tag "expertise", media: "all", "data-turbolinks-track" => true

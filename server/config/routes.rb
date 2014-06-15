@@ -15,6 +15,10 @@ Expertise::Application.routes.draw do
   post '/alternatives' => 'alternatives#create'
   delete '/alternatives/:id' => 'alternatives#destroy'
 
+  get '/criterions/:expertize' => 'criterions#index'
+  post '/criterions' => 'criterions#create'
+  delete '/criterions/:id' => 'criterions#destroy'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
