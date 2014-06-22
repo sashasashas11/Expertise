@@ -10,10 +10,17 @@
 //= require ../client/lib/angular-bootstrap/ui-bootstrap-tpls.min
 //= require ../client/lib/textAngular/dist/textAngular-sanitize.min
 //= require ../client/lib/textAngular/dist/textAngular.min
+//= require ../client/lib/jquery/jquery.min.js
 
-!function() {
-	var sign_out = document.getElementById("sign_out");
-	sign_out.addEventListener("click", function() {
+!function($) {
+	$("#sign_out").click(function() {
 		window.location.href = '/';
-	}, false);
-}();
+	});
+
+	$("#logout").remove();
+
+	$("#sign_up").click(function() {
+		window.location.href = '/users/sign_up';
+	});
+
+}(jQuery);

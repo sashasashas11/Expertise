@@ -1,5 +1,5 @@
 Expertise::Application.routes.draw do
-  get '/welcome', to: 'expertizes#index'
+  get '/welcome', to: 'expertizes#welcome'
   get '/expertise', to: 'expertizes#index'
   #post '/expertise', to: 'expertizes#create'
 

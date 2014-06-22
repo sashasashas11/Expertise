@@ -13,9 +13,10 @@
           %li
             %a{href: "/expertise"}Експертизи
           .text-success.singned-user
-            %li= "Користувач #{current_user.email}"
+            %li
+              %a#sign_out{href: "/"} Користувач #{current_user.email}
         - if user_signed_in?
-          %li= link_to "Вихід", destroy_user_session_path, :method => :delete
+          %li= link_to "Вихід", destroy_user_session_path, :method => :delete, id: "logout"
         - else
-          %li= link_to "Реєстрація", new_user_registration_path
-          %li= link_to "Вхід", new_user_session_path
+          %li= link_to "Реєстрація", new_user_registration_path, id:"sign_up"
+          %li= link_to "Вхід", new_user_session_path, id:"sign_out"

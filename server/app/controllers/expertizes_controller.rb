@@ -1,12 +1,15 @@
 class ExpertizesController < ApplicationController
   before_action :set_expertize, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, :only => [:index]
+  before_filter :authenticate_user!, :only => [:index, :show, :create, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
 
 
   def index
       @expertizes = Expertize.all.to_json()
       render json: @expertizes if params[:format] == "json"
+  end
+
+  def welcome
   end
 
   def show
@@ -57,6 +60,7 @@ class ExpertizesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_expertize
       @expertize = Expertize.find(params[:id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -128,8 +128,8 @@ angular.module('expertise.controllers', []).
 
 		var expertiseModalCtrl = function ($scope, $modalInstance, expertiseList) {
 			$scope.save = function(expertise) {
-				expertiseList.push({ name: expertise.name, goal: expertise.goal });
 				$http.post("/expertizes.json", { name: expertise.name, goal: expertise.goal, method: "test" }).success(function(res){
+					expertiseList.push({ name: expertise.name, goal: expertise.goal });
 					$scope.cancel();
 				});
 			}
